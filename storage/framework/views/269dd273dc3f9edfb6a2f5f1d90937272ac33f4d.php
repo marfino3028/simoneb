@@ -1,0 +1,1 @@
+<a class="mx-3 py-4 cursor-pointer" wire:click="logout">Logout</a><?php /**PATH C:\xampp\htdocs\sebi\Laravel72CRUD\resources\views/livewire/logout.blade.php ENDPATH**/ ?>

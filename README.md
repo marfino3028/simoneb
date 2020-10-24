@@ -1,0 +1,1 @@
+https://sekolahkoding.com/forum/pengertian-hasone-hasmany-dan-belongsto-pada-laravel
