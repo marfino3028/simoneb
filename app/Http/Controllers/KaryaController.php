@@ -23,7 +23,7 @@ class KaryaController extends Controller
      */
     public function create()
     {
-        return view('livewire.karya.create')
+        return view('livewire.karya.create');
     }
 
     /**
