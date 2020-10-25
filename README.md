@@ -1,1 +1,2 @@
-https://sekolahkoding.com/forum/pengertian-hasone-hasmany-dan-belongsto-pada-laravel
+https://github.com/vimsmak/Laravel72CRUD = untuk route controller
+https://github.com/hendisantika/laravel7_upload = untuk controller upload
