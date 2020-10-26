@@ -6,30 +6,29 @@
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
      <input type="hidden" wire:model="id">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-        Nama Kegiatan
+        Nama Lengkap
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-nama" wire:model="nama" type="text" placeholder="Masukkan Nama Kompetisi">
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-nama" wire:model="nama" type="text" placeholder="Masukkan Nama Lengkap">
       @error('nama') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
 
     </div>
     <div class="w-full md:w-1/2 px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-        Penyelenggara
+        Judul
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="penyelenggara_prestasi" id="grid-penyelenggara_prestasi" type="text" placeholder="Masukkan Penyelenggara">
-            @error('penyelenggara') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="judul" id="grid-judul" type="text" placeholder="Judul">
+            @error('judul') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
     </div>
   </div>
-    </div>
-    <div class="w-full md:w-1/2 px-3">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-        Tanggal
+        Media
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="tgl" id="grid-tgl" type="date" placeholder="Masukkan Tanggal">
-            @error('tgl') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-media" type="text" wire:model="media" placeholder="Nama Media">
+      @error('media') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
     </div>
   </div>
-  
   <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
         Semester
@@ -49,6 +48,28 @@
         </div>
       </div>
     </div>
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-link">
+        Link
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-link" type="text" wire:model="link" placeholder="Masukkan link">
+    </div>
+    {{-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+        State
+      </label>
+      <div class="relative">
+        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          <option>New Mexico</option>
+          <option>Missouri</option>
+          <option>Texas</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div> --}}
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
         Foto
@@ -74,21 +95,18 @@
                 <thead>
                 <tr>
                     <th width="1%">Foto</th>
-                    <th>Nama Kegiatan</th>
-                    <th>Penyelenggara</th>
                     <th>Tanggal</th>
-                    <th>Semester</th>
+                    <th width="1%">Judul</th>
+                    <th>Media</th>
+                    <th>Link</th>
                     <th width="1%">OPSI</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($sosial as $g)
+                @foreach($gambar as $g)
                     <tr>
                         <td><img width="150px" src="{{ url('/data_file/'.$g->file) }}"></td>
-                        <td>{{$g->nama}}</td>
-                        <td>{{$g->penyelenggara}}</td>
-                        <td>{{$g->tgl}}</td>
-                        <td>{{$g->semester}}</td>
+                        <td>{{$g->keterangan}}</td>
                         <td><a class="btn btn-danger" href="/upload/hapus/{{ $g->id }}">HAPUS</a></td>
                     </tr>
                 @endforeach

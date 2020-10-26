@@ -6,30 +6,20 @@
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
      <input type="hidden" wire:model="id">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-        Nama Kegiatan
+        Nama Usaha
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-nama" wire:model="nama" type="text" placeholder="Masukkan Nama Kompetisi">
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-nama" wire:model="nama" type="text" placeholder="Masukkan Nama Usaha">
       @error('nama') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
 
     </div>
     <div class="w-full md:w-1/2 px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-        Penyelenggara
+        Deskripsi Usaha
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="penyelenggara_prestasi" id="grid-penyelenggara_prestasi" type="text" placeholder="Masukkan Penyelenggara">
-            @error('penyelenggara') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="deskripsi" id="grid-deskripsi" type="textarea" placeholder="Masukkan Deskripsi Usaha">
+            @error('deskripsi') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
     </div>
   </div>
-    </div>
-    <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-        Tanggal
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="tgl" id="grid-tgl" type="date" placeholder="Masukkan Tanggal">
-            @error('tgl') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
-    </div>
-  </div>
-  
   <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
         Semester
@@ -74,20 +64,18 @@
                 <thead>
                 <tr>
                     <th width="1%">Foto</th>
-                    <th>Nama Kegiatan</th>
-                    <th>Penyelenggara</th>
-                    <th>Tanggal</th>
-                    <th>Semester</th>
+                    <th>Nama Usaha</th>
+                    <th width="1%">Deskrispi Usaha</th>
+                    <th width="1%">Semester</th>
                     <th width="1%">OPSI</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($sosial as $g)
+                @foreach($beasiswa as $g)
                     <tr>
                         <td><img width="150px" src="{{ url('/data_file/'.$g->file) }}"></td>
                         <td>{{$g->nama}}</td>
-                        <td>{{$g->penyelenggara}}</td>
-                        <td>{{$g->tgl}}</td>
+                        <td>{{$g->deskrispsi}}</td>
                         <td>{{$g->semester}}</td>
                         <td><a class="btn btn-danger" href="/upload/hapus/{{ $g->id }}">HAPUS</a></td>
                     </tr>
