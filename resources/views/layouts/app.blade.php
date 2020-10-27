@@ -37,9 +37,10 @@
         <a class="mx-3 py-4" href="/mentoring">Mentoring Keislaman</a>
         <a class="mx-3 py-4" href="/tahsin">Sertifikasi Tahsin/Tahfidz</a>
         <a class="mx-3 py-4" href="/beasiswa">Kekhasan Beasiswa</a>       
+        <a class="mx-3 py-4" href="/profile">Edit Profile</a>       
         </div>
-         <a class="mx-3 py-4" href="/userlist">User Lists</a>
-         <a class="mx-3 py-4" href="/album">Album</a>
+         {{-- <a class="mx-3 py-4" href="/userlist">User Lists</a> --}}
+         
         <livewire:logout />
         @endauth
         @guest

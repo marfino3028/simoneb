@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Okt 2020 pada 04.44
+-- Waktu pembuatan: 27 Okt 2020 pada 08.07
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -71,17 +71,6 @@ CREATE TABLE `mentoring` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mentoring_has_mhs`
---
-
-CREATE TABLE `mentoring_has_mhs` (
-  `mentoring_id` int(11) NOT NULL,
-  `mhs_id_mhs` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `menu`
 --
 
@@ -113,7 +102,6 @@ CREATE TABLE `mhs` (
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(45) NOT NULL,
   `beasiswa` varchar(45) DEFAULT NULL,
-  `semester_id` int(11) NOT NULL,
   `nilai_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -127,7 +115,8 @@ CREATE TABLE `nilai` (
   `id` int(11) NOT NULL,
   `ipk` varchar(45) DEFAULT NULL,
   `ips` varchar(45) DEFAULT NULL,
-  `tahun` varchar(45) DEFAULT NULL
+  `tahun` varchar(45) DEFAULT NULL,
+  `semester_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -169,9 +158,7 @@ CREATE TABLE `prestasi` (
 
 CREATE TABLE `semester` (
   `id` int(11) NOT NULL,
-  `semester` varchar(45) DEFAULT NULL,
-  `ipk` varchar(45) DEFAULT NULL,
-  `ips` varchar(45) DEFAULT NULL
+  `semester` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -230,13 +217,6 @@ ALTER TABLE `mentoring`
   ADD KEY `fk_mentoring_semester1` (`semester_id`);
 
 --
--- Indeks untuk tabel `mentoring_has_mhs`
---
-ALTER TABLE `mentoring_has_mhs`
-  ADD PRIMARY KEY (`mentoring_id`,`mhs_id_mhs`),
-  ADD KEY `fk_mentoring_has_mhs_mhs1` (`mhs_id_mhs`);
-
---
 -- Indeks untuk tabel `menu`
 --
 ALTER TABLE `menu`
@@ -255,14 +235,14 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `mhs`
   ADD PRIMARY KEY (`id_mhs`),
-  ADD KEY `fk_mhs_semester` (`semester_id`),
   ADD KEY `fk_mhs_nilai1` (`nilai_id`);
 
 --
 -- Indeks untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_nilai_semester1` (`semester_id`);
 
 --
 -- Indeks untuk tabel `org_mhs`
@@ -391,13 +371,6 @@ ALTER TABLE `mentoring`
   ADD CONSTRAINT `fk_mentoring_semester1` FOREIGN KEY (`semester_id`) REFERENCES `semester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `mentoring_has_mhs`
---
-ALTER TABLE `mentoring_has_mhs`
-  ADD CONSTRAINT `fk_mentoring_has_mhs_mentoring1` FOREIGN KEY (`mentoring_id`) REFERENCES `mentoring` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_mentoring_has_mhs_mhs1` FOREIGN KEY (`mhs_id_mhs`) REFERENCES `mhs` (`id_mhs`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Ketidakleluasaan untuk tabel `menu`
 --
 ALTER TABLE `menu`
@@ -414,8 +387,13 @@ ALTER TABLE `menu`
 -- Ketidakleluasaan untuk tabel `mhs`
 --
 ALTER TABLE `mhs`
-  ADD CONSTRAINT `fk_mhs_nilai1` FOREIGN KEY (`nilai_id`) REFERENCES `nilai` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_mhs_semester` FOREIGN KEY (`semester_id`) REFERENCES `semester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_mhs_nilai1` FOREIGN KEY (`nilai_id`) REFERENCES `nilai` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ketidakleluasaan untuk tabel `nilai`
+--
+ALTER TABLE `nilai`
+  ADD CONSTRAINT `fk_nilai_semester1` FOREIGN KEY (`semester_id`) REFERENCES `semester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `org_mhs`

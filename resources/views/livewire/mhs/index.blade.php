@@ -115,7 +115,7 @@
     </div>
   </div>
   <div> 
-    <button wire:click.prevent="store()" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" type="submit">Create</button>  
+    <button wire:click.prevent="store()" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" type="submit">Save Changes</button>  
     <button wire:click.prevent="cancel()" class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">Cancel</button>      
  </div>
 </form>
