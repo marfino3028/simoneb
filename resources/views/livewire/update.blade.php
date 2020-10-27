@@ -2,53 +2,94 @@
 <form class="w-full max-w-lg">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-     <input type="hidden" wire:model="user_id">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-        First Name
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" wire:model="name" type="text" placeholder="Please Enter Your Name">
-      @error('name') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
-
-    </div>
-    <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-        Email
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="email" id="grid-last-name" type="text" placeholder="demo@demo.com">
-            @error('email') <p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
-    </div>
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-        Password
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
-      <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-    </div>
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-2">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-        City
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
-    </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-        State
-      </label>
-      <div class="relative">
-        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+     <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="name" class="p-2 rounded border shadow-sm w-full" wire:model="form.name"
+                        placeholder="Name" />
+                    @error('form.name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="email" class="p-2 rounded border shadow-sm w-full" placeholder="Email"
+                        wire:model="form.email" />
+                    @error('form.email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="number" class="p-2 rounded border shadow-sm w-full" placeholder="masukkan NIM"
+                        wire:model="form.nim" />
+                    @error('form.nim') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="text" class="p-2 rounded border shadow-sm w-full" placeholder="2018/2019"
+                        wire:model="form.angkatan" />
+                    @error('form.angkatan') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="text" class="p-2 rounded border shadow-sm w-full" placeholder="Masukkan Alamat"
+                        wire:model="form.alamat" />
+                    @error('form.angkatan') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="number" class="p-2 rounded border shadow-sm w-full" placeholder="+62 "
+                        wire:model="form.hp" />
+                    @error('form.hp') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="text" class="p-2 rounded border shadow-sm w-full" placeholder="Masukkan Beasiswa"
+                        wire:model="form.beasiswa" />
+                    @error('form.beasiswa') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                </div>
+            </div>
+            </div>
+  <div class="container">
+    <h4>Menampilkan Data pada form berdasarkan pilihan Combo Box di PHP</h4>
+    <!-- <form action="" method="get"> -->
+    <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get">
+        <div class="form-group">
+            <label for="sel1">Pilih Semester:</label>
+            <select class="form-control" name="semester">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
         </div>
-      </div>
-    </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Pilih">
+        </div>
+    </form>
+    <h2>Input Nilai</h2>
+
+
+        <div class="form-group">
+            <label>IPK:</label>
+            <input type="text" name="nik" value="<?php echo $data['nik']; ?>" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>IPS:</label>
+            <input type="text" name="nama" value="<?php echo $data['nama']; ?>" class="form-control"  required/>
+        </div>
+
+        <div class="form-group">
+            <label>Tahun:</label>
+            <input type="date" name="tahun" value="" class="form-control" required/>
+        </div>
+</div>
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
         Zip
