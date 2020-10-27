@@ -45,7 +45,6 @@
                     @error('form.hp') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
             </div>
-            </div>
             <div class="flex justify-around my-8">
                 <div class="flex flex-wrap w-10/12">
                     <input type="text" class="p-2 rounded border shadow-sm w-full" placeholder="Masukkan Beasiswa"
@@ -53,18 +52,27 @@
                     @error('form.beasiswa') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
             </div>
-            </div>
-            
             <div class="flex justify-around my-8">
                 <div class="flex flex-wrap w-10/12">
-                    <input type="password" class="p-2 rounded border shadow-sm w-full" placeholder="Confirm Password"
-                        wire:model="form.password_confirmation" />
+                    <input type="password" class="p-2 rounded border shadow-sm w-full" placeholder="Password"
+                        wire:model="form.password" />
+                    @error('form.password') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="flex justify-around my-8">
                 <div class="flex flex-wrap w-10/12">
-                    <input type="submit" value="Register"
-                        class="p-2 bg-gray-800 text-white w-full rounded tracking-wider cursor-pointer" />
+                <input type="password" class="p-2 rounded border shadow-sm w-full" placeholder="Confirm Password" wire:model="form.password_confirmation" />
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <b>Photo</b> &nbsp;&nbsp;&nbsp;
+                    <input type="file" name="foto">
+                </div>
+            </div>
+            <div class="flex justify-around my-8">
+                <div class="flex flex-wrap w-10/12">
+                    <input type="submit" value="Register" class="p-2 bg-gray-800 text-white w-full rounded tracking-wider cursor-pointer" />
                 </div>
             </div>
         </form>
