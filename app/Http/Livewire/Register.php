@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\User;
+use App\Mhs;
 use Livewire\Component;
 
 class Register extends Component

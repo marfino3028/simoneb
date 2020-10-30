@@ -12,6 +12,7 @@ class Menu extends Authenticatable
     protected $fillable = [
         'id_menu', 'org_mhs_id','prestasi_id','sosial_id','tahsin_id','forum_id','karya_id','mentoring_id','mhs_id_mhs'
     ];
+    
     protected $cast = [
         'id_menu'     =>'integrer',
         `org_mhs_id`  =>'integrer',
