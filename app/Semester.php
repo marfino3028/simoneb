@@ -25,7 +25,7 @@ class Semester extends Authenticatable
     protected $primarykey = 'id';
     protected $table = 'semester';
     protected $fillable = [
-        'semester', 'ipk', 'ips'
+        'tahun', 'ipk', 'ips'
     ];
 
     /**
@@ -43,7 +43,7 @@ class Semester extends Authenticatable
         'id' => 'integer',
         'ipk' => 'integer',
         'ips' => 'integer',
-        'semester' => 'string'
+        'tahun' => 'string'
     ];
 
     public function karya(){

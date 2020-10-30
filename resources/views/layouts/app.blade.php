@@ -21,6 +21,7 @@
 <body class="flex flex-wrap justify-center">
     <div class="flex w-full px-4 bg-blue-900 text-white fixed">
         <a class="mx-3 py-4" href="/">Home</a>
+        <a class="mx-3 py-4" href="/register">Register</a>
         </div>
         @auth
         <div class="dropdown mx-3 py-4">
@@ -46,7 +47,6 @@
         @guest
         <div class="py-4">
             <a class="mx-3" href="/login">Login</a>
-            <a class="mx-3" href="/register">Register</a>
         </div>
         @endguest
     </div>

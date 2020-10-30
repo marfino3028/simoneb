@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\Mhs as Authenticatable;
-use \App\Semester;
+
 class Mhs extends Authenticatable
 {
     use Notifiable;
@@ -17,7 +17,7 @@ class Mhs extends Authenticatable
     protected $primarykey = 'id_mhs';
     protected $table = 'mhs';
     protected $fillable = [
-        'nim', 'foto', 'nama','semester_id','angkatan','alamat','hp','email','beasiswa','password'
+        'nim', 'foto', 'nama','semester_id','angkatan','alamat','hp','email','beasiswa','password','nilai_id'
     ];
 
     /**
@@ -38,10 +38,12 @@ class Mhs extends Authenticatable
         'alamat' => 'string',
         'hp' => 'string',
         'email' => 'string',
+        'password'=>'string',
         'beasiswa' => 'string',
         'foto' => 'string',
         'nama' => 'string',
-        'semester_id' => 'integer'
+        'semester_id' => 'integer',
+        'nilai_id'=>'integrer',
     ];
     protected $hidden = [
         'password'
@@ -49,6 +51,9 @@ class Mhs extends Authenticatable
 
     public function semester(){
         return $this->hasMany(\App\Semester::class, 'semester_id');
+    }
+    public function nilai(){
+        return $this->hasMany(\App\Nilai::class, 'nilai_id');
     }
     public function setPasswordAttribute($value)
     {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Prestasi;
+use App\Semester;
 use Illuminate\Http\Request;
 use Livewire\Component;
 class SemesterController extends Controller
@@ -13,7 +15,8 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        //
+        $semester = Semester::all();
+        return view('livewire.semester.index',compact('semester'));
     }
 
     /**
@@ -23,7 +26,7 @@ class SemesterController extends Controller
      */
     public function create()
     {
-        //
+        return view('liveware.semester.create');
     }
 
     /**
@@ -34,7 +37,13 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $semester = new Semester([
+            'semester'=>$request->get('semester'),
+            'ipk'=>$request->get('ipk'),
+            'ips'=>$request->get('ips'),
+        ]);
+        $semester->save();
+        return redirect('semester')->with('success','Data berhasil ditambah');
     }
 
     /**
@@ -45,7 +54,8 @@ class SemesterController extends Controller
      */
     public function show($id)
     {
-        //
+        $prestasi = Prestasi::find($id);
+        return view('livewire.semester.indexId',compact('prestasi'));
     }
 
     /**
@@ -56,7 +66,8 @@ class SemesterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $prestasi = Prestasi::find($id);
+        return view('editPrestasi',compact('prestasi'));
     }
 
     /**
@@ -68,7 +79,12 @@ class SemesterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $prestasi = Prestasi::find($id);
+        $prestasi->semester=$request->get('semester');
+        $prestasi->ipk=$request->get('ipk');
+        $prestasi->ips=$request->get('ips');
+        $prestasi->save();
+        return redirect('prestasi')->with('success','Data berhasil diubah');
     }
 
     /**
@@ -79,6 +95,8 @@ class SemesterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prestasi = Prestasi::find($id);
+        $prestasi->delete();
+        return redirect('prestasi')->with('sucess','Data berhasil dihapus');
     }
 }
